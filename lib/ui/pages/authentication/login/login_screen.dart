@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:madam_makeup/ui/pages/authentication/signup/sign_up_screen.dart';
-
+import 'package:madam_makeup/ui/pages/content/content_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ Widget _cuerpoCenter(context) {
         _inicioSesionText(),
         _correoTextField(),
         _contrasenaTextField(),
-        _inicioSesionButton(),
+        _inicioSesionButton(context),
         _registrarseTextButton(context),
       ],
     ),
@@ -40,11 +40,7 @@ Widget _nombreText() {
   return Container(
     padding: const EdgeInsets.all(10.0),
     child: const Text(
-      "Madam Makeup",
-      style: TextStyle(
-        fontSize: 22,
-        fontWeight: FontWeight.normal,
-      ),
+      "Madam Makeup",      
     ),
   );
 }
@@ -71,7 +67,6 @@ Widget _correoTextField() {
         labelText: 'Correo electronico',
         icon: Icon(Icons.mail_outline_sharp),
         hintText: 'ejemplo@correo.com',
-        fillColor: Colors.white,
         filled: true,
       ),
     ),
@@ -89,14 +84,13 @@ Widget _contrasenaTextField() {
         labelText: 'Contraseña',
         icon: Icon(Icons.password),
         hintText: 'Contraseña',
-        fillColor: Colors.white,
         filled: true,
       ),
     ),
   );
 }
 
-Widget _inicioSesionButton() {
+Widget _inicioSesionButton(context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
@@ -105,7 +99,12 @@ Widget _inicioSesionButton() {
           padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 5.0),
           child: ElevatedButton(
             child: const Text("Iniciar sesion"),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ContentPage()),
+              );
+            },
           ),
         ),
       ),
@@ -119,7 +118,7 @@ Widget _registrarseTextButton(context) {
     child: const Text("Registrarse"),
     onPressed: () {
       Navigator.push(
-        context, 
+        context,
         MaterialPageRoute(builder: (context) => const SignUpScreen()),
       );
     },

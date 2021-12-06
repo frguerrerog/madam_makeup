@@ -4,7 +4,6 @@ class AppCard extends StatelessWidget {
   final Widget? topLeftWidget, topRightWidget, content, extraContent;
   final String title;
 
-  // AppCard constructor
   const AppCard(
       {Key? key,
       required this.title,
@@ -16,15 +15,23 @@ class AppCard extends StatelessWidget {
           key: key,
         );
 
-  // Building basic card style
-  // With the option to modify its content
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 2,
       child: Container(
         padding: const EdgeInsets.only(
-            top: 4.0, bottom: 16.0, left: 8.0, right: 8.0),
+            top: 4.0, bottom: 13.0, left: 6.0, right: 6.0),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          //color: primaryColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0),
+              offset: const Offset(0, 1.0),
+              blurRadius: 10.0,
+            ),
+          ],
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -39,7 +46,7 @@ class AppCard extends StatelessWidget {
                   child: Text(
                     title,
                     textAlign: TextAlign.center,
-                    
+                    style: const TextStyle(fontSize: 20),
                   ),
                 ),
                 topRightWidget != null
